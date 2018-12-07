@@ -64,8 +64,7 @@ public class HuffProcessor {
 			}
 			String code = codings[bits]; 
 			out.writeBits(code.length(), Integer.parseInt(code, 2));
-		}
-		
+		}	
 	}
 
 	private void writeHeader(HuffNode root, BitOutputStream out) {
@@ -157,7 +156,7 @@ public class HuffProcessor {
 		if (currBits==-1) throw new HuffException("Cannot work with this bit value (-1)");
 		
 		// differentiating between 0 nodes and 1 nodes
-		else if (currBits==0) { // recursive case
+		if (currBits==0) { // recursive case
 			HuffNode left = readTreeHeader(in);
 			HuffNode right = readTreeHeader(in);
 			return new HuffNode(0,0,left,right); 
